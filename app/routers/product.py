@@ -37,3 +37,13 @@ def get_query_param(db: Session = Depends(get_db), limit: int = 5, skip=0,
     data = db.query(model.Products).filter(
         model.Products.name.contains(search)).limit(limit).offset(skip).all()
     return data
+
+
+@router.delete("/{id}")
+def delete_product(id: int, db: Session = Depends(get_db)):
+    data = db.query(model.Products).filter(model.Products.id == id)
+    if not data.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Product with id = {id} not found.")
+    data.delete(synchronize_session=False)
+    db.commit()
+    return {"details": f"Record with id = {id} is deleted."}
