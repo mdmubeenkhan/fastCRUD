@@ -1,6 +1,6 @@
 This is fastAPI CRUD project
 
-uvicorn main:app ==reload
+uvicorn main:app --reload
 
 GITHUB
 ==================
