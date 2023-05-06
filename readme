@@ -1,4 +1,4 @@
-This is fastAPI CRUD project
+This is fastAPI CRUD project developed for initial demo.
 
 uvicorn main:app --reload
 
