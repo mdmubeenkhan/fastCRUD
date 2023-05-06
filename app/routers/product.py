@@ -22,3 +22,9 @@ def add_new_product(payload: schema.Product, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_product)
     return {"data": new_product}
+
+
+@router.get("/")
+def get_all(db: Session = Depends(get_db)):
+    data = db.query(model.Products).all()
+    return {"data": data}
