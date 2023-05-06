@@ -39,6 +39,7 @@ def get_query_param(db: Session = Depends(get_db), limit: int = 5, skip=0,
     return data
 
 
+<<<<<<< HEAD
 @router.put("/{id}")
 def update(id: int, payload: schema.Product, db: Session = Depends(get_db)):
     data = db.query(model.Products).filter(model.Products.id == id)
@@ -48,3 +49,13 @@ def update(id: int, payload: schema.Product, db: Session = Depends(get_db)):
     data.update(payload.dict(), synchronize_session=False)
     db.commit()
     return {"data": data.first()}
+=======
+@router.delete("/{id}")
+def delete_product(id: int, db: Session = Depends(get_db)):
+    data = db.query(model.Products).filter(model.Products.id == id)
+    if not data.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Product with id = {id} not found.")
+    data.delete(synchronize_session=False)
+    db.commit()
+    return {"details": f"Record with id = {id} is deleted."}
+>>>>>>> dafe0d6 (Implemented DELETE feature.)
