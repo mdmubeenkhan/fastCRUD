@@ -28,3 +28,12 @@ def add_new_product(payload: schema.Product, db: Session = Depends(get_db)):
 def get_all(db: Session = Depends(get_db)):
     data = db.query(model.Products).all()
     return {"data": data}
+
+  
+# skip is used by frontend for pagination
+@router.get("/get-detailed")
+def get_query_param(db: Session = Depends(get_db), limit: int = 5, skip=0,
+                    search: Optional[str] = ""):
+    data = db.query(model.Products).filter(
+        model.Products.name.contains(search)).limit(limit).offset(skip).all()
+    return data
