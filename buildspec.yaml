@@ -1,10 +1,26 @@
 version: 0.2
 
+env:
+  DOCKER_USERNAME: "mdmubeenkhan"
+  IMAGE_NAME: "app"
+  IMAGE_TAG: "v1"
+
+parameter-store:
+  DOCKDOCKER_PASSWORD: "docker_password"
+
 phases:
   pre_build:
     commands:
-      - docker build -t product-app .
+      - echo Logging in to Docker hub...
+      - docker login -u $DOCKER_USERNAME -p $DOCKDOCKER_PASSWORD
+      
   build:
     commands:
-      - docker images
-      - docker run helloworld echo "Hello, World!" 
+      - echo Building docker image...
+      - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+      - docker tag $IMAGE_NAME:$IMAGE_TAG $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - echo Pushing docker image to docker hub...
+      - docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG
