@@ -32,3 +32,8 @@ dev-env - http://192.168.0.238:8000
 }
 
 
+DOCKER
+sudo docker build --tag mdmubeenkhan/app:latest .
+docker images
+sudo docker run --name app -d -p 8000:8000 mdmubeenkhan/app
+
