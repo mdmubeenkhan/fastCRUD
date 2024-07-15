@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - docker build -t product-app .
+  build:
+    commands:
+      - docker images
+      - docker run helloworld echo "Hello, World!" 
