@@ -1,6 +1,6 @@
 This is fastAPI CRUD project developed for Kendo's initial demo.
 
-uvicorn main:app --reload --host 192.168.0.162 --port 8000
+~/fastCRUD uvicorn app.main:app --reload --host 192.168.0.238 --port 8000
 
 GITHUB - initial info
 ==================
@@ -18,4 +18,17 @@ push an existing repository from the command line
 git remote add origin https://github.com/mdmubeenkhan/fastCRUD.git
 git branch -M main
 git push -u origin main
+
+
+POST product
+=========================
+POST - {{dev-env}}/product/
+dev-env - http://192.168.0.238:8000
+{
+  "name": "hub",
+  "price": 6900,
+  "quantity": 1,
+  "ondiscount": false
+}
+
 

@@ -1,9 +1,9 @@
 # FastAPI crud app
 
 from fastapi import FastAPI
-from models import model
-from db.db import engine
-from routers import product
+from app.models import model
+from app.db.db import engine
+from app.routers import product
 
 
 from fastapi.middleware.cors import CORSMiddleware
