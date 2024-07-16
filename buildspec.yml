@@ -1,12 +1,13 @@
 version: 0.2
 
 env:
-  DOCKER_USERNAME: "mdmubeenkhan"
-  IMAGE_NAME: "app"
-  IMAGE_TAG: "v1"
+  variables:
+    DOCKER_USERNAME: "mdmubeenkhan"
+    IMAGE_NAME: "app"
+    IMAGE_TAG: "v1"
 
-parameter-store:
-  DOCKDOCKER_PASSWORD: "docker_password"
+  parameter-store:
+    DOCKDOCKER_PASSWORD: "docker_password"
 
 phases:
   pre_build:
